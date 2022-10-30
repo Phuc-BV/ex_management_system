@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route , link} from 'react-router-dom';
+import { Home } from './component/Home';
+import { Add_ex } from './component/Add_ex';
+import { Edit_ex } from './component/Edit_ex';
+import { GlobalProvider } from './context/GlobalContext'
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <GlobalProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element = {<Home/>}/>
+          <Route path="/add" element = {<Add_ex/>}/>
+          <Route path="/edit/:id" element = {<Edit_ex/>}/>
+        </Routes>
+      </BrowserRouter>
+    </GlobalProvider>
     </div>
   );
 }
